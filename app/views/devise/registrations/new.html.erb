@@ -8,6 +8,11 @@
     <%= f.email_field :email, autofocus: true %>
   </div>
 
+  <div>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
@@ -24,6 +29,7 @@
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
-<% end %>
 
+<% end %>
+<%= link_to "Back", :back %>
 <%= render "devise/shared/links" %>
