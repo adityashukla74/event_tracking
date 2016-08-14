@@ -1,2 +1,0 @@
-class EnlistrsvpController < ApplicationController
-end

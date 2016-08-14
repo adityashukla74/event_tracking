@@ -1,0 +1,2 @@
+class UserRsvp < ApplicationRecord
+end

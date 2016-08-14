@@ -1,0 +1,2 @@
+class UserrsvpController < ApplicationController
+end
