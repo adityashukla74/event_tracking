@@ -17,21 +17,18 @@
           <a class="btn btn-navbar" "data-target"= ".nav-collapse" "data-toggle"= "collapse">
           </a>
           <a class="brand">Event Tracking Application By Aditya Shukla</a>
-          <div class="nav-collapse">
-            <ul class="nav", :style= "float:right">
-              <li>
+          <div class="nav-collapse" align="right">
                 <% if user_signed_in? %>
                   <%= link_to "Log Out", destroy_user_session_path, :method => :delete %>
                 <% else %>
                   <%= link_to "Log In", new_user_session_path %>
                 <% end %>
-              </li>
+
               <% if !user_signed_in? %>
-                <li>
+
                   <%= link_to "Sign Up", new_user_registration_path %>
-                </li>
+
               <% end %>
-            </ul>
           </div>
         </div>
       </div>
