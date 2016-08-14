@@ -73,7 +73,7 @@ class EventsController < ApplicationController
       params.require(:event).permit(:title)
     end
 
-    def Going
+    def Attend
       @rsvp =UserRsvp.new
       @rsvp.event_id = params[:id]
       @rsvp.user_id = current_user
@@ -87,4 +87,5 @@ class EventsController < ApplicationController
         end
       end
     end
+
 end
