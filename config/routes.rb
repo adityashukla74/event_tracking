@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   root :to => "events#index"
   
   devise_scope :user do 
-    match "/users/sign_up", :to => "devise/registrations#new", via: :get
+    get "/users/sign_up", :to => "devise/registrations#new", via: :all
   end 
 
-  match 'events/attend/:id', :to => 'events#attend', :as => :attend
+  get 'events/attend/:id', :to => 'events#attend', :as => :attend
 end
