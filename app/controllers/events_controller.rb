@@ -72,4 +72,19 @@ class EventsController < ApplicationController
     def event_params
       params.require(:event).permit(:title)
     end
+
+    def Going
+      @rsvp =UserRsvp.new
+      @rsvp.event_id = params[:id]
+      @rsvp.user_id = current_user
+      @rsvp.attending = true
+      @events = Event.all
+      respond_to do |format|
+        if @rsvp.save
+          #redirect to events
+          format.html{ redirect_to events_path, notice: "Thanks for Coming" }
+        else format.html {redirect_to events_path, notice: "You have already joined the event"}
+        end
+      end
+    end
 end
