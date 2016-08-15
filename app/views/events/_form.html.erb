@@ -13,7 +13,6 @@
 
   <div class="field">
     <%= f.label :title %>
-
     <%= f.text_field :title %>
   </div>
 <div class="field">
@@ -23,7 +22,7 @@
     <%= f.submit %>
   </div>
 
-<div class="field">
+  <div class="field">
     <%= f.label :location_id %><br />
     <%= collection_select(:event, :location_id, Location.all, :id, :name, :prompt => true) %>
   </div>

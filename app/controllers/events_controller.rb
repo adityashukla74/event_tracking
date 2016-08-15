@@ -82,6 +82,7 @@ class EventsController < ApplicationController
         else
           format.html { redirect_to events_path, notice: 'You are already registered to volunteer for the event!' }
         end
+        
     end
 
     def unattend
