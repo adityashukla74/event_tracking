@@ -1,12 +1,17 @@
-<p>
-  <b>Name:</b>
-  <%= @location.name %>
-</p>
+<div>
+  <b>Title:</b>
+  <%= @event.title %> on <%= @event.date %>
+  <div>
+    <% if(!@event.location.nil?) %>
 
-<p>
-  <b>Address:</b>
-  <%= @location.address %>
-</p>
+      Takes place at <%= @event.location.name %> at address:<br />
+      <%= @event.location.address %>
+    <% else %>
+      This event currently has no location!
+    <% end %>
 
-<%= link_to 'Edit', edit_location_path(@location) %> |
-<%= link_to 'Back', locations_path %>
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>
