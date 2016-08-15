@@ -73,18 +73,15 @@ class EventsController < ApplicationController
     end
 
     def Attend
-      @rsvp =AttendRsvp.new
-      @rsvp.event_id = params[:id]
-      @rsvp.user_id = current_user
+      redirect_to "/events" and return if !user_signed_in?
+      opts = {:event_id => params[:id], :user_id => current_user.id}
+      @rsvp = AttendRsvp.where(opts).first || AttendRsvp.new(opts)
       @rsvp.attending = true
-      @events = Event.all
-      respond_to do |format|
         if @rsvp.save
-          #redirect to events
-          format.html{ redirect_to events_path, notice: "Thanks for Coming" }
-        else format.html {redirect_to events_path, notice: "You have already joined the event"}
+          format.html { redirect_to events_path, notice: 'Thanks for volunteering!' }
+        else
+          format.html { redirect_to events_path, notice: 'You are already registered to volunteer for the event!' }
         end
-      end
     end
 
     def unattend
