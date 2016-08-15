@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :index]
+  before_action :authenticate_user!, :except => [:show, :index]
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   # GET /events
@@ -16,6 +16,7 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
+  
   end
 
   # GET /events/1/edit
@@ -67,7 +68,6 @@ class EventsController < ApplicationController
     def set_event
       @event = Event.find(params[:id])
     end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
       params.require(:event).permit(:title)
