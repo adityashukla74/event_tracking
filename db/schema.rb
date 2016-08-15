@@ -50,4 +50,12 @@ ActiveRecord::Schema.define(version: 20160815081223) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "attend_rsvps", :force => true do |t|
+ +    t.integer  "user_id"
+ +    t.integer  "event_id"
+ +    t.boolean  "attending"
+ +    t.datetime "created_at"
+ +    t.datetime "updated_at"
+ +  end
+
 end

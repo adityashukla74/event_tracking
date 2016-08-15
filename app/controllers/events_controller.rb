@@ -11,6 +11,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @attends = AttendRsvp.where(:event_id => params[:id], :attending => true)
   end
 
   # GET /events/new
@@ -72,7 +73,7 @@ class EventsController < ApplicationController
     end
 
     def Attend
-      @rsvp =UserRsvp.new
+      @rsvp =AttendRsvp.new
       @rsvp.event_id = params[:id]
       @rsvp.user_id = current_user
       @rsvp.attending = true
@@ -85,5 +86,19 @@ class EventsController < ApplicationController
         end
       end
     end
+
+    def unattend
+    @rsvp = AttendRsvp.where(:event_id => params[:id], :user_id => current_user).first
+    @events = Event.all
+    respond_to do |format|
+      if not @rsvp.nil? and @rsvp.update_attribute(:attending, false)
+        format.html { redirect_to events_path, notice: 'Try some other events of your choice' }
+        #redirect_to events
+      else
+        format.html { redirect_to events_path, notice: 'Please Signup to join this event' }
+      end
+    end
+  end
+
 
 end

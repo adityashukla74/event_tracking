@@ -9,6 +9,25 @@
 		    	This event currently has no location!
 			<% end %>
     	</div>
+    	<div>
+    		<h3>Attends</h3>
+      		<% if @attends.length == 0 %>
+        		No one has signed up for this event.
+      		<% else %>
+	    		<table>
+		      		<tr>
+		        		<th>Email</th>
+		        		<th>Skills</th>
+		      		</tr>
+		      		<% @attends.each do |attend| %>
+			      		<tr>
+				        	<td><%= User.find(attend.user_id).email %></td>
+				        	<td><%= get_attend_skills(attend.user_id) %></td>
+			      		</tr>
+		      		<% end %>
+	    		</table>
+  			<% end %>
+  		</div>
 </div>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |

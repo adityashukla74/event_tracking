@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   end 
 
   get 'events/attend/:id', :to => 'events#attend', :as => :attend
+  get 'attend/search', :to => 'attendrsvps#index', :as => :attendsearch
 end

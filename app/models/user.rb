@@ -3,6 +3,6 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :userRsvps
-  has_many :events, :through => :userRsvps
+  has_many :attendRsvps
+  has_many :events, :through => :attendRsvps
 end
