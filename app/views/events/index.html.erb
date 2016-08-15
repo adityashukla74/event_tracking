@@ -16,14 +16,13 @@
     <td><%= event.location.name rescue nil %></td>
     <td><%= link_to 'Show', event %></td>
     <td><%= link_to 'Edit', edit_event_path(event) %></td>
-    <td><%= link_to 'Destroy', event, confirm: 'Are you sure?', method: :delete %></td>
-     <% if user_signed_in? and check_attend_status(event)%>
+    <% if user_signed_in? and not event.attending?(current_user)%>
       <td><%= button_to 'Attend', attend_path(event)%></td>
-      <% end %>
-    <% if user_signed_in? and not check_attend_status(event)%>
-      <td>You are signed up to attend for this event.
-      <%= button_to 'Unattend', unattend_path(event)%>
-      </td>
+    <% end %>
+    <% if user_signed_in? and event.attending?(current_user)%>
+      <td>
+        You are signed up to attend for this event!<%= button_to 'Unattned', unattend_path(event)%>
+      </td> 
     <% end %>
   </tr>
 <% end %>
